@@ -1,9 +1,18 @@
 import { useEffect } from "react";
 import { ZoomMtg } from "@zoomus/websdk";
 
-ZoomMtg.setZoomJSLib("https://source.zoom.us/1.9.1/lib", "/av");
-
 const ZoomPlayer = ({ meetingNumber, passWord, userName, userEmail }) => {
+  console.log(`{ meetingNumber, passWord, userName, userEmail }`, {
+    meetingNumber,
+    passWord,
+    userName,
+    userEmail,
+  });
+
+  console.log(
+    `process.env.NEXT_PUBLIC_ZOOM_API_KEY`,
+    process.env.NEXT_PUBLIC_ZOOM_API_KEY
+  );
   // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
   const signatureEndpoint = "/api/signature";
 
@@ -12,6 +21,7 @@ const ZoomPlayer = ({ meetingNumber, passWord, userName, userEmail }) => {
   const leaveUrl = process.env.NEXT_PUBLIC_CURRENT_DOMAIN;
 
   useEffect(() => {
+    ZoomMtg.setZoomJSLib("https://source.zoom.us/1.9.1/lib", "/av");
     ZoomMtg.preLoadWasm();
     ZoomMtg.prepareJssdk();
   }, []);
