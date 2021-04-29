@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 const ZoomPlayer = dynamic(
   () => {
@@ -22,12 +23,18 @@ const Meet = ({ query }) => {
     useremail: userEmail,
   } = query;
   return (
-    <ZoomPlayer
-      meetingNumber={meetingNumber}
-      passWord={passWord}
-      userName={userName}
-      userEmail={userEmail}
-    />
+    <>
+      <Head>
+        <link type="text/css" rel="stylesheet" href="/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="/react-select.css" />
+      </Head>
+      <ZoomPlayer
+        meetingNumber={meetingNumber}
+        passWord={passWord}
+        userName={userName}
+        userEmail={userEmail}
+      />
+    </>
   );
 };
 
